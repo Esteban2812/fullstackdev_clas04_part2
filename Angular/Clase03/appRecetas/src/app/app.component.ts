@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-
+import { IReceta } from './receta.interface'
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	recetas: Array<{ titulo: string, ingredientes: string, preparacion: string, foto: string, tiempo: number }> = []
+	//recetas: Array<IReceta> = []
 
-	agregar(receta) {
+	/*agregar(receta: IReceta) {
 		this.recetas.push(receta)
-	}
+  }*/
 }

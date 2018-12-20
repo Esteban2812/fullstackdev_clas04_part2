@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IReceta } from '../receta.interface';
+import { RecetaService } from '../receta.service';
+import { LogService } from '../log.service';
 
 
 @Component({
@@ -8,9 +11,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-	@Output() onAgregar = new EventEmitter()
+	//@Output() onAgregar = new EventEmitter<IReceta>()
 
-	constructor() { }
+	constructor(private recetaService: RecetaService) { }
 
 	ngOnInit() {
 	}
@@ -19,10 +22,11 @@ export class FormularioComponent implements OnInit {
 
 	agregarReceta(titulo: string, ingredientes: string, preparacion: string, tiempo: number) {
 
-		const receta = { titulo, ingredientes, preparacion, tiempo, foto: this.imagen }
+		const receta:IReceta = { titulo, ingredientes, preparacion, tiempo, foto: this.imagen,visualizar: false}
 
-		this.onAgregar.emit(receta)
-
+		//this.onAgregar.emit(receta)
+    this.recetaService.agregarReceta(receta)
+    //this.logService.escribir("Nueva Receta","error")
 		this.imagen = undefined
 	}
 
